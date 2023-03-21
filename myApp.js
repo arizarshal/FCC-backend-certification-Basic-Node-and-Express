@@ -5,10 +5,10 @@ let app = express();
 
 absolutePath = __dirname + '/views/index.html'
 
-app.use(express.static(__dirname + '/public'))
+app.use("/public", express.static(__dirname + '/public'))
 
 
-app.get('/', function(req, res) {
+app.get('/public', function(req, res) {
     res.sendFile(absolutePath)
 })
 
