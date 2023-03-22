@@ -45,4 +45,16 @@ app.get('/now', time, (req, res) => {
         })
     }
 )
+
+// Exercise 9
+app.get('/:word/echo', (req, res) => {
+    // const word = req.params.word
+
+    res.json({
+        word: req.params.word
+    })
+
+})
+
+
  module.exports = app;
