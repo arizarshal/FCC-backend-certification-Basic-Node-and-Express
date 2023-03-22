@@ -1,8 +1,9 @@
-let dotenv = require('dotenv').config()
-let express = require('express');
-let app = express();
+const dotenv = require('dotenv').config()
+const express = require('express');
+const bodyParser = require('body-parser')
+const app = express();
 
-
+app.use(bodyParser.urlencoded({extended: false}))
 
 // Exercise 7:
 app.use((request, response, next) => {
@@ -57,6 +58,7 @@ app.get('/:word/echo', (req, res) => {
 })
 
 
+// Exercise 10
 app.route("/name").get(function(req, res) {
     console.log(req.query)
     var firstName = req.query.first;
@@ -67,6 +69,7 @@ app.route("/name").get(function(req, res) {
     });
   });
 
+// Exercise 11
 
 
 
