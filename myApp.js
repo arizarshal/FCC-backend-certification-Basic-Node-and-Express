@@ -61,13 +61,22 @@ app.get('/:word/echo', (req, res) => {
 // Exercise 10
 app.route("/name").get(function(req, res) {
     console.log(req.query)
-    var firstName = req.query.first;
-    var lastName = req.query.last;
+    const firstName = req.query.first;
+    const lastName = req.query.last;
 
     res.json({
       name: `${firstName} ${lastName}`
     });
-  });
+  })
+    .post((req, res) => {
+        const firstName = req.body.first;
+        const lastName = req.body.last;
+
+        res.json({
+            name: `${firstName} ${lastName}`
+        })
+    })
+  ;
 
 // Exercise 11
 
