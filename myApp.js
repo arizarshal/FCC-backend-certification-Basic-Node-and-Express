@@ -3,7 +3,7 @@ let express = require('express');
 let app = express();
 
 const logger = (req, res, next) => {
-    console.log(req.method+" "+req.path+' - '+req.ip)
+    console.log(`${req.method} ${req.path} - ${req.ip}`)
     next()
 }
 
@@ -15,12 +15,12 @@ absolutePath = __dirname + '/views/index.html'
 
 
 
-app.get('/', logger,function(req, res) {
+app.get('/', logger, function(req, res) {
     res.sendFile(absolutePath)
 })
 
 
-app.get("/json", logger ,(req, res)=>{
+app.get("/json", logger, (req, res)=>{
     if (process.env.MESSAGE_STYLE === "uppercase") {
         res.json({"message": "HELLO JSON"})
       } else {
