@@ -2,12 +2,13 @@ let dotenv = require('dotenv').config()
 let express = require('express');
 let app = express();
 
-const logger = (req, res, next) => {
-    console.log(`${req.method} ${req.path} - ${req.ip}`)
-    next()
-}
 
-// app.use(logger)
+
+// Exercise 4:
+app.use((request, response, next) => {
+    console.log(request.method + " " + request.path + " - " + request.ip);
+    next();
+  });
 
 app.use("/public", express.static(__dirname + '/public'))
 
@@ -15,12 +16,12 @@ absolutePath = __dirname + '/views/index.html'
 
 
 
-app.get('/', logger, function(req, res) {
+app.get('/', function(req, res) {
     res.sendFile(absolutePath)
 })
 
 
-app.get("/json", logger, (req, res)=>{
+app.get("/json", (req, res)=>{
     if (process.env.MESSAGE_STYLE === "uppercase") {
         res.json({"message": "HELLO JSON"})
       } else {
