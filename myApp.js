@@ -2,16 +2,17 @@ let dotenv = require('dotenv').config()
 let express = require('express');
 let app = express();
 
-app.use("/public", express.static(__dirname + '/public'))
-
-absolutePath = __dirname + '/views/index.html'
-
-const logger = function(req, res, next) {
-    console.log(req.method, req.path,'-', req.ip)
+const logger = (req, res, next) => {
+    console.log(req.method+" " +req.path+' - '+req.ip)
     next()
 }
 
 app.use(logger)
+
+app.use("/public", express.static(__dirname + '/public'))
+
+absolutePath = __dirname + '/views/index.html'
+
 
 
 app.get('/', function(req, res) {
