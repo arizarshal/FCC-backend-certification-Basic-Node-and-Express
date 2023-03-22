@@ -49,9 +49,10 @@ app.get('/now', time, (req, res) => {
 // Exercise 9
 app.get('/:word/echo', (req, res) => {
     // const word = req.params.word
+    // console.log(word)
 
-    res.json({
-        word: req.params.word
+    res.send({
+        echo: req.params.word
     })
 
 })
